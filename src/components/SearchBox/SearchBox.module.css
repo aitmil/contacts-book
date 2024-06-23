@@ -1,17 +1,37 @@
 .box {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 0 auto 36px;
+  align-items: center;
   max-width: 470px;
+  margin: 24px auto 24px;
+  padding: 0 4px 4px;
+  background-color: inherit;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #39536c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.label {
-  font-size: 24px;
+
+.box:hover,
+.box:focus {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .input {
-  border: 1px solid black;
   border-radius: 4px;
   padding: 8px;
+  display: block;
+  padding: 8px;
+  outline: none;
+  border: none;
   font-size: larger;
+  background-color: inherit;
+}
+
+.icon {
+  color: rgba(57, 83, 108, 0.6);
+}
+
+.input::placeholder {
+  color: rgba(57, 83, 108, 0.6);
 }

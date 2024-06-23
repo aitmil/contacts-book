@@ -1,0 +1,24 @@
+.container {
+  background-color: #ebedf0;
+  padding-top: 140px;
+  display: flex;
+  gap: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 100vh;
+}
+
+.boxEdit {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.wrapper {
+  width: calc(100vw - 472px);
+}
+
+.title {
+  align-self: start;
+}

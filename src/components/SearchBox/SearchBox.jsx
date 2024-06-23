@@ -1,7 +1,9 @@
-import { useId } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectNameFilter, changeFilter } from "../../redux/filtersSlice.js";
-import css from "./SearchBox.module.css";
+import { useId } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { MdSearch } from 'react-icons/md';
+import { changeFilter } from '../../redux/filter/slice';
+import { selectNameFilter } from '../../redux/filter/selectors';
+import css from './SearchBox.module.css';
 
 export default function SearchBox() {
   const id = useId();
@@ -10,15 +12,17 @@ export default function SearchBox() {
 
   return (
     <div className={css.box}>
-      <label htmlFor={id} className={css.label}>
-        Find contacts by name
-      </label>
+      <MdSearch
+        size={28}
+        className={css.icon}
+      />
       <input
         id={id}
         value={filter}
-        onChange={(e) => dispatch(changeFilter(e.target.value.trim()))}
+        onChange={e => dispatch(changeFilter(e.target.value.trim()))}
         className={css.input}
-      ></input>
+        placeholder='Search contact...'
+      />
     </div>
   );
 }
