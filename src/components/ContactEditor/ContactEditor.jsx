@@ -8,11 +8,11 @@ import { addContact } from '../../redux/contacts/operations';
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Too short!')
-    .max(50, 'Too short!')
+    .max(50, 'Too Long!')
     .required('This field must be filled in!'),
   number: Yup.string()
     .min(3, 'Too short!')
-    .max(50, 'Too long!')
+    .max(15, 'Too long!')
     .required('This field must be filled in!'),
 });
 

@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 import css from './AuthNav.module.css';
 
 export default function AuthNav() {
   return (
     <div className={css.authWrapper}>
       <NavLink
-        className={css.login}
+        className={clsx(css.link, css.login)}
         to='/login'
       >
         Login

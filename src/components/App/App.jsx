@@ -8,8 +8,8 @@ const ContactsPage = lazy(() =>
   import('../../pages/ContactsPage/ContactsPage')
 );
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
-const RegisterPage = lazy(() =>
-  import('../../pages/RegisterPage/RegisterPage')
+const RegistrationPage = lazy(() =>
+  import('../../pages/RegistrationPage/RegistrationPage')
 );
 
 export default function App() {
@@ -23,7 +23,7 @@ export default function App() {
           />
           <Route
             path='/register'
-            element={<RegisterPage />}
+            element={<RegistrationPage />}
           />
           <Route
             path='/login'

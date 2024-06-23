@@ -5,10 +5,14 @@
 
 .text {
   margin-top: 24px;
+  font-size: 24px;
 }
 
 .link {
   text-transform: uppercase;
+  font-weight: 700;
+  color: inherit;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon {
@@ -18,5 +22,4 @@
 .link:hover,
 .link:focus {
   color: #fe7733;
-  text-decoration: underline;
 }

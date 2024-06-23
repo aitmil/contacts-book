@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { IoPerson } from 'react-icons/io5';
 import { FaPhone } from 'react-icons/fa6';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 import css from './Contact.module.css';
 import { deleteContact } from '../../redux/contacts/operations';
 
@@ -23,6 +24,7 @@ export default function Contact({ contact: { id, name, number } }) {
         className={css.btn}
         onClick={() => dispatch(deleteContact(id))}
       >
+        <RiDeleteBin5Fill />
         Delete
       </button>
     </>

@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
-import css from './LoginForm.module.css';
+import css from './RegistrationForm.module.css';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ export default function LoginForm() {
           className={css.btn}
           type='submit'
         >
-          Login
+          Sign up
         </button>
       </Form>
     </Formik>
