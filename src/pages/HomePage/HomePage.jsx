@@ -7,7 +7,7 @@ export default function HomePage() {
       <HomeContent />
       <img
         className={css.img}
-        src='/public/img/home-phonebook.jpg'
+        src='/img/home-phonebook.jpg'
         alt='phonebook image'
       ></img>
     </main>
