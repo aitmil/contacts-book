@@ -1,0 +1,22 @@
+.content {
+  padding-left: 24px;
+  text-align: center;
+}
+
+.text {
+  margin-top: 24px;
+}
+
+.link {
+  text-transform: uppercase;
+}
+
+.icon {
+  margin-top: 24px;
+}
+
+.link:hover,
+.link:focus {
+  color: #fe7733;
+  text-decoration: underline;
+}
