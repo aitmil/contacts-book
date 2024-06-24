@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #fe7733;
+  color: var(--accent-orange-color);
 }
 
 .text {

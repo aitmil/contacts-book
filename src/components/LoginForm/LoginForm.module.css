@@ -9,23 +9,23 @@
 }
 
 .input {
-  border: 1px solid #39536c;
+  border: 1px solid var(--background-dark-color);
   border-radius: 4px;
   padding: 8px;
-  color: #39536c;
+  color: var(--text-dark-color);
   font-size: larger;
   background-color: inherit;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition);
 }
 
 .input:hover,
 .input:focus {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--accent-shadow);
 }
 
 .error {
-  color: #db2f47;
+  color: var(--accent-red-color);
 }
 
 .btn {
@@ -35,18 +35,17 @@
   font-size: larger;
   border-radius: 6px;
   width: 320px;
-  color: #ebedf0;
+  color: var(--light-color);
   font-weight: 600;
-  background-color: #39536c;
+  background-color: var(--background-dark-color);
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 8px var(--secondary-shadow);
+  transition: box-shadow var(--transition), background-color var(--transition),
+    color var(--transition);
 }
 
 .btn:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  background-color: #fe7733;
-  color: #39536c;
+  box-shadow: 0 8px 16px var(--accent-secondary-shadow);
+  background-color: var(--accent-orange-color);
+  color: var(--text-dark-color);
 }

@@ -7,14 +7,14 @@
   font-weight: 600;
   font-size: 24px;
   color: inherit;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 .link:hover,
 .link:focus {
-  color: #fe7733;
+  color: var(--accent-orange-color);
 }
 
 .active {
-  color: #fe7733;
+  color: var(--accent-orange-color);
 }

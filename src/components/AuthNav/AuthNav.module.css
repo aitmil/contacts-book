@@ -6,14 +6,13 @@
 
 .login {
   padding: 12px 84px;
-  border: 2px solid #169c95;
+  border: 2px solid var(--accent-green-color);
   border-radius: 4px;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 24px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: box-shadow var(--transition), border var(--transition);
 }
 
 .link {
@@ -21,18 +20,18 @@
   font-weight: 600;
   font-size: 24px;
   color: inherit;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 .login:hover,
 .login:focus {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  border: 2px solid #fe7733;
+  box-shadow: 0 8px 16px var(--accent-shadow);
+  border: 2px solid var(--accent-orange-color);
 }
 
 .link:hover,
 .link:focus {
-  color: #fe7733;
+  color: var(--accent-orange-color);
 }
 
 .text {
