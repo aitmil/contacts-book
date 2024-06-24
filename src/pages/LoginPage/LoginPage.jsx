@@ -9,7 +9,7 @@ export default function LoginPage() {
       <AuthContent />
       <LoginForm />
       <p className={css.text}>
-        Do not have an account?{' '}
+        Don't have an account?{' '}
         <NavLink
           className={css.link}
           to='/register'
