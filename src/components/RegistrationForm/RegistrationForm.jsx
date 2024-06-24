@@ -1,6 +1,22 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
 import css from './RegistrationForm.module.css';
+
+const ContactSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, 'Name is too short - should be 3 chars minimum')
+    .max(20, 'Name is too long - should be 20 chars minimum')
+    .required('No name provided'),
+  email: Yup.string()
+    .email('Invalid email')
+    .min(10, 'Email is too short - should be 10 chars minimum')
+    .required('No email provided'),
+  password: Yup.string()
+    .required('No password provided')
+    .min(8, 'Password is too short - should be 8 chars minimum')
+    .matches(/[a-zA-Z]/, 'Password can contain only Latin letters'),
+});
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -10,13 +26,27 @@ export default function LoginForm() {
 
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ name: '', email: '', password: '' }}
+      validationSchema={ContactSchema}
       onSubmit={handleSubmit}
     >
       <Form
         className={css.form}
         autoComplete='off'
       >
+        <label className={css.label}>
+          Username
+          <Field
+            className={css.input}
+            type='text'
+            name='name'
+          />
+        </label>
+        <ErrorMessage
+          className={css.error}
+          name='name'
+          component='span'
+        />
         <label className={css.label}>
           Email
           <Field
@@ -25,6 +55,11 @@ export default function LoginForm() {
             name='email'
           ></Field>
         </label>
+        <ErrorMessage
+          className={css.error}
+          name='email'
+          component='span'
+        />
         <label className={css.label}>
           Password
           <Field
@@ -33,6 +68,11 @@ export default function LoginForm() {
             name='password'
           ></Field>
         </label>
+        <ErrorMessage
+          className={css.error}
+          name='password'
+          component='span'
+        />
         <button
           className={css.btn}
           type='submit'
