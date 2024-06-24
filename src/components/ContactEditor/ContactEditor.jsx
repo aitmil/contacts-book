@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 import css from './ContactEditor.module.css';
 import { addContact } from '../../redux/contacts/operations';
 
@@ -23,6 +24,7 @@ export default function ContactForm() {
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
+    toast.success('Contact added successfully!');
     actions.resetForm();
   };
 
