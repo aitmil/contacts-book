@@ -18,7 +18,7 @@ export default function ContactList() {
           >
             <Contact contact={contact} />
             <ModalDelete contact={contact} />
-            <ModalEdit contact={contact} />
+            {/* <ModalEdit contact={contact} /> */}
           </li>
         ))}
       </ul>
