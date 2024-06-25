@@ -3,20 +3,20 @@ import { createSlice } from '@reduxjs/toolkit';
 const modalSlice = createSlice({
   name: 'modal',
   initialState: {
-    editModalIsOpen: false,
+    // editModalIsOpen: false,
     deleteModalIsOpen: false,
-    contactIdToEdit: null,
+    // contactIdToEdit: null,
     contactIdToDelete: null,
   },
   reducers: {
-    openEditModal: (state, action) => {
-      state.editModalIsOpen = true;
-      state.contactIdToEdit = action.payload;
-    },
-    closeEditModal: state => {
-      state.editModalIsOpen = false;
-      state.contactIdToEdit = null;
-    },
+    // openEditModal: (state, action) => {
+    //   state.editModalIsOpen = true;
+    //   state.contactIdToEdit = action.payload;
+    // },
+    // closeEditModal: state => {
+    //   state.editModalIsOpen = false;
+    //   state.contactIdToEdit = null;
+    // },
     openDeleteModal: (state, action) => {
       state.deleteModalIsOpen = true;
       state.contactIdToDelete = action.payload;
@@ -29,8 +29,8 @@ const modalSlice = createSlice({
 });
 
 export const {
-  openEditModal,
-  closeEditModal,
+  // openEditModal,
+  // closeEditModal,
   openDeleteModal,
   closeDeleteModal,
 } = modalSlice.actions;

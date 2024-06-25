@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+import { register } from '../../redux/auth/operations';
 import * as Yup from 'yup';
 import css from './RegistrationForm.module.css';
 
@@ -20,7 +22,18 @@ const ContactSchema = Yup.object().shape({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+
   const handleSubmit = (values, actions) => {
+    dispatch(register(values))
+      .unwrap()
+      .then(data => {
+        toast.success('Registration successful!');
+        console.log(data);
+      })
+      .catch(err => {
+        toast.error('Registration error!');
+        console.log(err);
+      });
     actions.resetForm();
   };
 

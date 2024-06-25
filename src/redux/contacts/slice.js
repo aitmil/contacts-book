@@ -3,7 +3,7 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
-  editContact,
+  // editContact,
 } from './operations';
 
 const contactsSlice = createSlice({
@@ -50,19 +50,19 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, state => {
         state.error = true;
         state.loading = false;
-      })
-      .addCase(editContact.pending, state => {
-        state.loading = true;
-        state.error = false;
-      })
-      .addCase(editContact.fulfilled, (state, action) => {
-        state.items = state.items.find(item => item.id == action.payload.id);
-        state.loading = false;
-      })
-      .addCase(editContact.rejected, state => {
-        state.error = true;
-        state.loading = false;
       });
+    // .addCase(editContact.pending, state => {
+    //   state.loading = true;
+    //   state.error = false;
+    // })
+    // .addCase(editContact.fulfilled, (state, action) => {
+    //   state.items = state.items.find(item => item.id == action.payload.id);
+    //   state.loading = false;
+    // })
+    // .addCase(editContact.rejected, state => {
+    //   state.error = true;
+    //   state.loading = false;
+    // });
   },
 });
 
