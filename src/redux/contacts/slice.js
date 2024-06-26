@@ -5,14 +5,15 @@ import {
   deleteContact,
   // editContact,
 } from './operations';
+import { logOut } from '../auth/operations';
 
 const handlePending = state => {
-  state.isLoading = true;
+  state.loading = true;
   state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.isLoading = false;
+  state.loading = false;
   state.error = action.payload;
 };
 
@@ -42,13 +43,18 @@ const contactsSlice = createSlice({
         state.items = state.items.filter(item => item.id !== action.payload.id);
         state.loading = false;
       })
-      .addCase(deleteContact.rejected, handleRejected);
-    // .addCase(editContact.pending, handlePending)
-    // .addCase(editContact.fulfilled, (state, action) => {
-    //   state.items = state.items.find(item => item.id == action.payload.id);
-    //   state.loading = false;
-    // })
-    // .addCase(editContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      // .addCase(editContact.pending, handlePending)
+      // .addCase(editContact.fulfilled, (state, action) => {
+      //   state.items = state.items.find(item => item.id == action.payload.id);
+      //   state.loading = false;
+      // })
+      // .addCase(editContact.rejected, handleRejected)
+      .addCase(logOut.fulfilled, state => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
+      });
   },
 });
 

@@ -54,4 +54,4 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, handleRejected),
 });
 
-export default authSlice.reducer;
+export const authReducer = authSlice.reducer;
