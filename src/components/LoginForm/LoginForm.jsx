@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
+import { logIn } from '../../redux/auth/operations';
 import css from './LoginForm.module.css';
 
 const ContactSchema = Yup.object().shape({
@@ -17,6 +19,14 @@ const ContactSchema = Yup.object().shape({
 export default function LoginForm() {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
+    dispatch(logIn(values))
+      .unwrap()
+      .then(() => {
+        toast.success('You are logged in!');
+      })
+      .catch(() => {
+        toast.error('Authorization error! Please try again.');
+      });
     actions.resetForm();
   };
 

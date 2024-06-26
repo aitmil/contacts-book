@@ -26,13 +26,11 @@ export default function LoginForm() {
   const handleSubmit = (values, actions) => {
     dispatch(register(values))
       .unwrap()
-      .then(data => {
+      .then(() => {
         toast.success('Registration successful!');
-        console.log(data);
       })
-      .catch(err => {
+      .catch(() => {
         toast.error('Registration error!');
-        console.log(err);
       });
     actions.resetForm();
   };
