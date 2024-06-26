@@ -21,9 +21,6 @@ export default function LoginForm() {
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values))
       .unwrap()
-      .then(() => {
-        toast.success('You are logged in!');
-      })
       .catch(() => {
         toast.error('Authorization error! Please try again.');
       });

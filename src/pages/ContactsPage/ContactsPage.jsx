@@ -1,6 +1,5 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import ContactEditor from '../../components/ContactEditor/ContactEditor';
 import SearchBox from '../../components/SearchBox/SearchBox';
@@ -34,14 +33,6 @@ export default function ContactsPage() {
         {isLoading && <Loader />}
         {isError && <Error />}
         <ContactList />
-        <Toaster
-          toastOptions={{
-            style: {
-              padding: '16px',
-              marginTop: '145px',
-            },
-          }}
-        />
       </div>
     </main>
   );
