@@ -8,13 +8,12 @@ import { addContact } from '../../redux/contacts/operations';
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Too short!')
-    .max(50, 'Too Long!')
-    .required('This field must be filled in!'),
+    .min(3, 'Name is too short - should be 3 chars minimum')
+    .max(13, 'Name is too long - should be 13 chars minimum')
+    .required('Required'),
   number: Yup.string()
-    .min(3, 'Too short!')
-    .max(15, 'Too long!')
-    .required('This field must be filled in!'),
+    .matches(/^[0-9]{10}$/, 'Must be 10 digits')
+    .required('Required'),
 });
 
 export default function ContactForm() {
@@ -23,8 +22,14 @@ export default function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
-    toast.success('Contact added successfully!');
+    dispatch(addContact(values))
+      .unwrap()
+      .then(() => {
+        toast.success('Contact successfully added to your phonebook!');
+      })
+      .catch(() => {
+        toast.error('Something went wrong. Try again!');
+      });
     actions.resetForm();
   };
 

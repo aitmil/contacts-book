@@ -1,17 +1,25 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoPerson } from 'react-icons/io5';
 import { FaPhone } from 'react-icons/fa6';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { MdOutlineEdit } from 'react-icons/md';
-import {
-  openDeleteModal,
-  // openEditModal
-} from '../../redux/modal/slice';
+import { openDeleteModal, openEditModal } from '../../redux/modal/slice';
+import { selectContactById } from '../../redux/contacts/selectors';
 import clsx from 'clsx';
 import css from './Contact.module.css';
 
-export default function Contact({ contact: { name, number } }) {
+export default function Contact({ contact: { id, name, number } }) {
   const dispatch = useDispatch();
+
+  const activeContact = useSelector(state => selectContactById(state, id));
+
+  const handleEditClick = () => {
+    dispatch(openEditModal(activeContact));
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(openDeleteModal(activeContact));
+  };
 
   return (
     <>
@@ -29,7 +37,7 @@ export default function Contact({ contact: { name, number } }) {
         <button
           type='button'
           className={clsx(css.btn, css.editBtn)}
-          // onClick={() => dispatch(openEditModal())}
+          onClick={handleEditClick}
         >
           <MdOutlineEdit />
           Edit
@@ -37,7 +45,7 @@ export default function Contact({ contact: { name, number } }) {
         <button
           type='button'
           className={css.btn}
-          onClick={() => dispatch(openDeleteModal())}
+          onClick={handleDeleteClick}
         >
           <RiDeleteBin5Fill />
           Delete

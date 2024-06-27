@@ -3,24 +3,35 @@ import toast from 'react-hot-toast';
 import Modal from 'react-modal';
 import clsx from 'clsx';
 import { closeDeleteModal } from '../../redux/modal/slice';
-import { selectDeleteModalIsOpen } from '../../redux/modal/selectors';
+import {
+  selectActiveToDelete,
+  selectDeleteModalIsOpen,
+} from '../../redux/modal/selectors';
 import { deleteContact } from '../../redux/contacts/operations';
 import css from './ModalDelete.module.css';
 
 Modal.setAppElement('#root');
 
-export default function ModalDelete({ contact: { id } }) {
-  const isOpen = useSelector(selectDeleteModalIsOpen);
+export default function ModalDelete() {
   const dispatch = useDispatch();
+
+  const contactToDelete = useSelector(selectActiveToDelete);
+  const isOpen = useSelector(selectDeleteModalIsOpen);
 
   if (!isOpen) {
     return null;
   }
 
   const handleDelete = () => {
-    dispatch(deleteContact(id));
-    dispatch(closeDeleteModal());
-    toast.success('Contact deleted successfully!');
+    dispatch(deleteContact(contactToDelete.id))
+      .unwrap()
+      .then(() => {
+        toast.success('Contact successfully deleted!');
+        dispatch(closeDeleteModal());
+      })
+      .catch(() => {
+        toast.error('Something went wrong. Try again!');
+      });
   };
 
   return (
@@ -32,7 +43,8 @@ export default function ModalDelete({ contact: { id } }) {
       contentLabel='Delete Modal'
       closeTimeoutMS={400}
     >
-      <p className={css.delText}>Delete contact?</p>
+      <h2 className={css.title}>Confirm deletion</h2>
+      <p className={css.text}>Are you sure you want do delete the contact?</p>
       <div className={css.delBtnWrapper}>
         <button
           type='button'
