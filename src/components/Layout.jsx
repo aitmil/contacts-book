@@ -1,5 +1,5 @@
 import { Toaster } from 'react-hot-toast';
-import AppBar from '../AppBar/AppBar';
+import AppBar from './AppBar/AppBar';
 
 export default function Layout({ children }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout({ children }) {
         toastOptions={{
           style: {
             padding: '16px',
-            marginTop: '145px',
+            marginTop: '80px',
           },
         }}
       />
