@@ -4,8 +4,8 @@ import Modal from 'react-modal';
 import clsx from 'clsx';
 import { closeDeleteModal } from '../../redux/modal/slice';
 import {
-  selectActiveToDelete,
   selectDeleteModalIsOpen,
+  selectActiveContact,
 } from '../../redux/modal/selectors';
 import { deleteContact } from '../../redux/contacts/operations';
 import css from './ModalDelete.module.css';
@@ -15,7 +15,7 @@ Modal.setAppElement('#root');
 export default function ModalDelete() {
   const dispatch = useDispatch();
 
-  const contactToDelete = useSelector(selectActiveToDelete);
+  const contactToDelete = useSelector(selectActiveContact);
   const isOpen = useSelector(selectDeleteModalIsOpen);
 
   if (!isOpen) {

@@ -1,20 +1,10 @@
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import css from './ContactEditor.module.css';
 import { addContact } from '../../redux/contacts/operations';
-
-const ContactSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, 'Name is too short - should be 3 chars minimum')
-    .max(13, 'Name is too long - should be 13 chars minimum')
-    .required('Required'),
-  number: Yup.string()
-    .matches(/^[0-9]{10}$/, 'Must be 10 digits')
-    .required('Required'),
-});
+import { ContactSchema } from '../../js/validation';
 
 export default function ContactForm() {
   const initialValues = { name: '', number: '' };

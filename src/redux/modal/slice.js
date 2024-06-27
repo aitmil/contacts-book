@@ -5,25 +5,24 @@ const modalSlice = createSlice({
   initialState: {
     editModalIsOpen: false,
     deleteModalIsOpen: false,
-    activeToEdit: null,
-    activeToDelete: null,
+    activeContact: null,
   },
   reducers: {
     openEditModal: (state, action) => {
       state.editModalIsOpen = true;
-      state.activeToEdit = action.payload;
+      state.activeContact = action.payload;
     },
     closeEditModal: state => {
       state.editModalIsOpen = false;
-      state.activeToEdit = null;
+      state.activeContact = null;
     },
     openDeleteModal: (state, action) => {
       state.deleteModalIsOpen = true;
-      state.activeToDelete = action.payload;
+      state.activeContact = action.payload;
     },
     closeDeleteModal: state => {
       state.deleteModalIsOpen = false;
-      state.activeToDelete = null;
+      state.activeContact = null;
     },
   },
 });

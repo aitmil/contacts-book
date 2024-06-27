@@ -2,16 +2,16 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import Modal from 'react-modal';
-import * as Yup from 'yup';
 import clsx from 'clsx';
 import { IoPerson } from 'react-icons/io5';
 import { FaPhone } from 'react-icons/fa6';
 import { closeEditModal } from '../../redux/modal/slice';
 import {
-  selectActiveToEdit,
+  selectActiveContact,
   selectEditModalIsOpen,
 } from '../../redux/modal/selectors';
 import { editContact } from '../../redux/contacts/operations';
+import { ContactSchema } from '../../js/validation';
 import css from './ModalEdit.module.css';
 
 Modal.setAppElement('#root');
@@ -19,7 +19,7 @@ Modal.setAppElement('#root');
 export default function ModalEdit() {
   const dispatch = useDispatch();
 
-  const contactToEdit = useSelector(selectActiveToEdit);
+  const contactToEdit = useSelector(selectActiveContact);
   const isOpen = useSelector(selectEditModalIsOpen);
 
   const handleEdit = (values, actions) => {
@@ -33,23 +33,13 @@ export default function ModalEdit() {
       .unwrap()
       .then(() => {
         toast.success('Contact successfully updated!');
-        dispatch(closeEditModal);
+        dispatch(closeEditModal());
       })
       .catch(() => {
         toast.error('Something went wrong. Try again!');
       });
     actions.resetForm();
   };
-
-  const ContactSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(3, 'Name is too short - should be 3 chars minimum')
-      .max(13, 'Name is too long - should be 13 chars minimum')
-      .required('Required'),
-    number: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Must be 10 digits')
-      .required('Required'),
-  });
 
   if (!contactToEdit) return null;
 
@@ -82,6 +72,11 @@ export default function ModalEdit() {
               type='text'
             ></Field>
           </label>
+          <ErrorMessage
+            className={css.error}
+            name='name'
+            component='span'
+          />
           <label className={css.label}>
             <FaPhone size={30} />
             <Field
@@ -90,6 +85,11 @@ export default function ModalEdit() {
               type='number'
             ></Field>
           </label>
+          <ErrorMessage
+            className={css.error}
+            name='number'
+            component='span'
+          />
           <div className={css.btnWrapper}>
             <button
               type='submit'
